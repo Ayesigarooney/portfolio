@@ -1,484 +1,442 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayesiga Rooney — Full-Stack & Mobile Developer</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script>(function(w, d) { w.CollectId = "68762d2ac80a14072368ecb6"; var h = d.head || d.getElementsByTagName("head")[0]; var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.async=true; s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayesiga Rooney — Developer Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <script>(function(w,d){w.CollectId="68762d2ac80a14072368ecb6";var h=d.head||d.getElementsByTagName("head")[0];var s=d.createElement("script");s.type="text/javascript";s.async=true;s.src="https://collectcdn.com/launcher.js";h.appendChild(s);})(window,document);</script>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="#home">Ayesiga Rooney</a>
-            </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+<!-- ===================== NAV ===================== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand">AR<span class="dot">.</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home"     class="nav-link active">Home</a></li>
+      <li><a href="#about"    class="nav-link">About</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#skills"   class="nav-link">Skills</a></li>
+      <li><a href="#contact"  class="nav-link">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section id="home" class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-tag"><i class="fas fa-circle blink"></i>&nbsp; Open to opportunities</span>
+      <h1>Hi, I'm <br><span class="gradient-text">Ayesiga Rooney</span></h1>
+      <p class="hero-role"><span id="typed"></span><span class="cursor">|</span></p>
+      <p class="hero-desc">I build clean, performant web &amp; mobile applications — from polished UIs to robust back-ends and smart data pipelines.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Work</a>
+        <a href="#contact"  class="btn btn-ghost"><i class="fas fa-paper-plane"></i> Contact Me</a>
+      </div>
+      <div class="hero-numbers">
+        <div class="hn-item">
+          <strong>8+</strong>
+          <span>Projects</span>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-particles" id="particles"></div>
-        <div class="hero-content">
-            <div class="hero-text">
-                <div class="hero-badge"><i class="fas fa-circle pulse-dot"></i> Available for hire</div>
-                <h1>Hi, I'm <span class="highlight">Ayesiga Rooney</span></h1>
-                <h2 id="typing-title">Full-Stack Developer</h2>
-                <p>I build elegant, high-performance web and mobile applications — from sleek UIs to solid backend systems and everything in between.</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> View My Work</a>
-                    <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Get In Touch</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <span class="hero-stat-num">8+</span>
-                        <span class="hero-stat-label">Projects</span>
-                    </div>
-                    <div class="hero-stat-divider"></div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-num">3+</span>
-                        <span class="hero-stat-label">Years Exp.</span>
-                    </div>
-                    <div class="hero-stat-divider"></div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-num">5+</span>
-                        <span class="hero-stat-label">Technologies</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="profile-ring">
-                    <div class="profile-picture">
-                        <img src="rooney.jpeg" alt="Ayesiga Rooney">
-                    </div>
-                </div>
-                <div class="floating-badge badge-flutter"><i class="fas fa-mobile-alt"></i> Flutter</div>
-                <div class="floating-badge badge-python"><i class="fab fa-python"></i> Python</div>
-                <div class="floating-badge badge-js"><i class="fab fa-js-square"></i> JavaScript</div>
-            </div>
+        <div class="hn-divider"></div>
+        <div class="hn-item">
+          <strong>3+</strong>
+          <span>Yrs Experience</span>
         </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
+        <div class="hn-divider"></div>
+        <div class="hn-item">
+          <strong>20+</strong>
+          <span>Clients</span>
         </div>
-    </section>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-wrap">
+        <img src="rooney.jpeg" alt="Ayesiga Rooney" />
+      </div>
+      <div class="chip chip-1"><i class="fas fa-mobile-alt"></i> Flutter</div>
+      <div class="chip chip-2"><i class="fab fa-python"></i> Python</div>
+      <div class="chip chip-3"><i class="fab fa-js"></i> JavaScript</div>
+    </div>
+  </div>
+  <a href="#about" class="scroll-down" aria-label="Scroll down">
+    <i class="fas fa-chevron-down"></i>
+  </a>
+</section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I'm a passionate full-stack and mobile developer from Uganda with 3+ years of hands-on experience building real-world products. I specialise in Flutter mobile apps, web development, and machine learning — writing clean, maintainable code that solves actual problems.</p>
-                    <p>When I'm not shipping code, I'm exploring new frameworks, contributing to open-source projects, or capturing moments through outdoor photography.</p>
-                    <div class="about-highlights">
-                        <div class="highlight-item"><i class="fas fa-check-circle"></i> Mobile-first development with Flutter & Dart</div>
-                        <div class="highlight-item"><i class="fas fa-check-circle"></i> Full-stack web apps with JS / Python</div>
-                        <div class="highlight-item"><i class="fas fa-check-circle"></i> Machine learning & data science</div>
-                        <div class="highlight-item"><i class="fas fa-check-circle"></i> IoT systems integration</div>
-                    </div>
-                    <div class="stats">
-                        <div class="stat">
-                            <h3 class="stat-counter" data-target="8">0</h3>
-                            <p>Projects on GitHub</p>
-                        </div>
-                        <div class="stat">
-                            <h3 class="stat-counter" data-target="3">0</h3>
-                            <p>Years Experience</p>
-                        </div>
-                        <div class="stat">
-                            <h3 class="stat-counter" data-target="20">0</h3>
-                            <p>Happy Clients</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=400&fit=crop" alt="Coding workspace">
-                </div>
-            </div>
+<!-- ===================== ABOUT ===================== -->
+<section id="about" class="section about">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">Who I Am</p>
+      <h2 class="section-title">About Me</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=560&h=460&fit=crop" alt="Coding setup" />
+        <div class="about-exp-badge"><strong>3+</strong><span>Years<br>Coding</span></div>
+      </div>
+      <div class="about-body">
+        <h3>Full-Stack &amp; Mobile Developer from Uganda</h3>
+        <p>I'm a software developer passionate about building products that solve real problems. I specialise in Flutter mobile development, JavaScript full-stack apps, and Python-powered machine learning.</p>
+        <p>I care about clean code, great UX, and shipping things that actually work. When I'm not writing code I'm exploring new tech, contributing to open-source, or shooting outdoor photography.</p>
+        <ul class="about-list">
+          <li><i class="fas fa-check-circle"></i> Flutter &amp; Dart mobile apps</li>
+          <li><i class="fas fa-check-circle"></i> Full-stack web with JavaScript</li>
+          <li><i class="fas fa-check-circle"></i> Machine learning &amp; data science</li>
+          <li><i class="fas fa-check-circle"></i> IoT systems &amp; real-time data</li>
+        </ul>
+        <div class="about-stats">
+          <div class="as-item">
+            <h4 class="counter" data-target="8">0+</h4>
+            <p>GitHub Projects</p>
+          </div>
+          <div class="as-item">
+            <h4 class="counter" data-target="3">0+</h4>
+            <p>Years Exp.</p>
+          </div>
+          <div class="as-item">
+            <h4 class="counter" data-target="20">0+</h4>
+            <p>Happy Clients</p>
+          </div>
         </div>
-    </section>
+        <a href="#contact" class="btn btn-primary" style="margin-top:1.5rem">
+          <i class="fas fa-handshake"></i> Let's Work Together
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <p class="section-subtitle">Real projects from my <a href="https://github.com/Ayesigarooney" target="_blank" rel="noopener">GitHub</a> — built with purpose, shipped with care.</p>
+<!-- ===================== PROJECTS ===================== -->
+<section id="projects" class="section projects">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">What I've Built</p>
+      <h2 class="section-title">My Projects</h2>
+      <p class="section-sub">Real projects pulled straight from my <a href="https://github.com/Ayesigarooney" target="_blank" rel="noopener">GitHub</a>.</p>
+    </div>
 
-            <div class="projects-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
-                <button class="filter-btn" data-filter="web">Web</button>
-                <button class="filter-btn" data-filter="ml">ML / Data</button>
-            </div>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="mobile">Mobile</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="ml">ML / Data</button>
+    </div>
 
-            <div class="projects-grid">
+    <div class="projects-grid">
 
-                <!-- Tunofy App -->
-                <div class="project-card featured" data-category="mobile">
-                    <div class="project-badge">Featured</div>
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=350&fit=crop" alt="Tunofy Streaming App">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/Ayesigarooney/tunofy-app" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <span class="project-type"><i class="fas fa-mobile-alt"></i> Flutter App</span>
-                            <span class="project-lang dart">Dart</span>
-                        </div>
-                        <h3>Tunofy — Unified Streaming Hub</h3>
-                        <p>High-performance Flutter app for live TV, FM Radio, Movies (TMDB API) and News. Zero sign-up. Instant playback. Offline-first favourites with background audio and hardware controls.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Dart</span>
-                            <span class="tech-tag">TMDB API</span>
-                            <span class="tech-tag">Background Audio</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- IOT Smart Flow -->
-                <div class="project-card featured" data-category="mobile">
-                    <div class="project-badge star"><i class="fas fa-star"></i> 1 star</div>
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=350&fit=crop" alt="IoT Crowd Management">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/Ayesigarooney/IOT-Crowd-Management-System-Smart-Flow-app" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <span class="project-type"><i class="fas fa-wifi"></i> IoT + Mobile</span>
-                            <span class="project-lang dart">Dart</span>
-                        </div>
-                        <h3>Smart Flow — IoT Crowd Manager</h3>
-                        <p>Flutter app for an IoT-based crowd management system. Real-time sensor data visualisation, crowd density alerts, and smart routing to help venues manage foot traffic safely.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Dart</span>
-                            <span class="tech-tag">IoT</span>
-                            <span class="tech-tag">Real-time Data</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ashop -->
-                <div class="project-card" data-category="mobile">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&h=350&fit=crop" alt="Ashop Manager">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/Ayesigarooney/Ashop" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <span class="project-type"><i class="fas fa-store"></i> Mobile App</span>
-                            <span class="project-lang dart">Dart</span>
-                        </div>
-                        <h3>Ashop — Shop Manager</h3>
-                        <p>A Flutter-based shop management app that helps small business owners track inventory, sales and customers — all from their phone.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Dart</span>
-                            <span class="tech-tag">SQLite</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Machine Learning -->
-                <div class="project-card" data-category="ml">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=350&fit=crop" alt="Machine Learning">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/Ayesigarooney/Machinelearning" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <span class="project-type"><i class="fas fa-brain"></i> Machine Learning</span>
-                            <span class="project-lang python">Python</span>
-                        </div>
-                        <h3>Machine Learning Notebooks</h3>
-                        <p>A collection of ML experiments and models built with Google Colab — covering regression, classification, neural networks and data preprocessing workflows.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Jupyter</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Google Colab</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- To-Do App -->
-                <div class="project-card" data-category="web">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=350&fit=crop" alt="To-Do App">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://ayesigarooney.github.io/to-do/" target="_blank" rel="noopener" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="https://github.com/Ayesigarooney/to-do" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <span class="project-type"><i class="fas fa-globe"></i> Web App</span>
-                            <span class="project-lang js">JavaScript</span>
-                        </div>
-                        <h3>To-Do Web App</h3>
-                        <p>A clean, responsive task manager web app. Add, complete and delete tasks with persistent local storage — no backend needed.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">LocalStorage</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Calculator -->
-                <div class="project-card" data-category="web">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=350&fit=crop" alt="Calculator App">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://ayesigarooney.github.io/calculator/" target="_blank" rel="noopener" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                                <a href="https://github.com/Ayesigarooney/calculator" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-meta">
-                            <span class="project-type"><i class="fas fa-globe"></i> Web App</span>
-                            <span class="project-lang js">JavaScript</span>
-                        </div>
-                        <h3>Calculator Web App</h3>
-                        <p>A slick, keyboard-friendly calculator with full arithmetic operations and a clean modern design. Built entirely with vanilla JavaScript.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="projects-cta">
-                <a href="https://github.com/Ayesigarooney" target="_blank" rel="noopener" class="btn btn-outline">
-                    <i class="fab fa-github"></i> See All Repos on GitHub
-                </a>
-            </div>
+      <!-- Tunofy -->
+      <article class="pcard" data-cat="mobile">
+        <div class="pcard-img">
+          <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=320&fit=crop" alt="Tunofy App" loading="lazy" />
+          <span class="pcard-badge featured">Featured</span>
+          <div class="pcard-overlay">
+            <a href="https://github.com/Ayesigarooney/tunofy-app" target="_blank" rel="noopener" class="pcard-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <p class="section-subtitle">Technologies I work with on a regular basis.</p>
-            <div class="skills-content">
-
-                <div class="skills-category">
-                    <div class="skills-cat-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <h3>Mobile Development</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fas fa-feather-alt"></i>
-                            <span>Flutter</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-code"></i>
-                            <span>Dart</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-wifi"></i>
-                            <span>IoT</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-fire"></i>
-                            <span>Firebase</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skills-category">
-                    <div class="skills-cat-icon"><i class="fas fa-globe"></i></div>
-                    <h3>Web Development</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML5</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-css3-alt"></i>
-                            <span>CSS3</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-js-square"></i>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-node-js"></i>
-                            <span>Node.js</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skills-category">
-                    <div class="skills-cat-icon"><i class="fas fa-brain"></i></div>
-                    <h3>Data & ML</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-flask"></i>
-                            <span>TensorFlow</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-table"></i>
-                            <span>Pandas</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-book-open"></i>
-                            <span>Jupyter</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skills-category">
-                    <div class="skills-cat-icon"><i class="fas fa-tools"></i></div>
-                    <h3>Tools & DevOps</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fab fa-git-alt"></i>
-                            <span>Git</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-docker"></i>
-                            <span>Docker</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-cloud"></i>
-                            <span>Cloud APIs</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-cat"><i class="fas fa-mobile-alt"></i> Flutter App</span>
+            <span class="lang-badge dart">Dart</span>
+          </div>
+          <h3>Tunofy — Unified Streaming Hub</h3>
+          <p>High-performance Flutter app for live TV, FM Radio, Movies (TMDB) and News. Zero sign-up, instant playback, offline-first favourites, background audio with hardware controls.</p>
+          <div class="pcard-tags">
+            <span>Flutter</span><span>Dart</span><span>TMDB API</span><span>BG Audio</span>
+          </div>
         </div>
-    </section>
+      </article>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's work together!</h3>
-                    <p>I'm always open to new opportunities, interesting projects, and good conversations. Feel free to reach out anytime.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>ayesigarooney8@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+256 7751 521-57</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Mabaale, Kagadi District, Uganda</span>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/Ayesigarooney" target="_blank" rel="noopener" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="mailto:ayesigarooney8@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <form class="contact-form" id="contact-form" action="https://formspree.io/f/xldnvlqb" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </form>
-            </div>
+      <!-- Smart Flow -->
+      <article class="pcard" data-cat="mobile">
+        <div class="pcard-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=320&fit=crop" alt="Smart Flow IoT" loading="lazy" />
+          <span class="pcard-badge starred"><i class="fas fa-star"></i> Starred</span>
+          <div class="pcard-overlay">
+            <a href="https://github.com/Ayesigarooney/IOT-Crowd-Management-System-Smart-Flow-app" target="_blank" rel="noopener" class="pcard-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="footer-logo">Ayesiga Rooney</span>
-                    <p>Full-Stack & Mobile Developer</p>
-                </div>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="footer-social">
-                    <a href="https://github.com/Ayesigarooney" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="mailto:ayesigarooney8@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="footer-year"></span> Ayesiga Rooney. All rights reserved.</p>
-                <p class="footer-tagline">Built with <i class="fas fa-heart" style="color:#e74c3c"></i> from Uganda</p>
-            </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-cat"><i class="fas fa-wifi"></i> IoT + Mobile</span>
+            <span class="lang-badge dart">Dart</span>
+          </div>
+          <h3>Smart Flow — IoT Crowd Manager</h3>
+          <p>Flutter app for an IoT crowd management system. Real-time sensor visualisation, density alerts and smart routing to keep venues safe.</p>
+          <div class="pcard-tags">
+            <span>Flutter</span><span>Dart</span><span>IoT</span><span>Real-time</span>
+          </div>
         </div>
-    </footer>
+      </article>
 
-    <script src="script.js"></script>
+      <!-- Ashop -->
+      <article class="pcard" data-cat="mobile">
+        <div class="pcard-img">
+          <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&h=320&fit=crop" alt="Ashop" loading="lazy" />
+          <div class="pcard-overlay">
+            <a href="https://github.com/Ayesigarooney/Ashop" target="_blank" rel="noopener" class="pcard-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-cat"><i class="fas fa-store"></i> Mobile App</span>
+            <span class="lang-badge dart">Dart</span>
+          </div>
+          <h3>Ashop — Shop Manager</h3>
+          <p>Flutter shop management app. Track inventory, sales and customers from a single phone screen. Built for small business owners.</p>
+          <div class="pcard-tags">
+            <span>Flutter</span><span>Dart</span><span>SQLite</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Machine Learning -->
+      <article class="pcard" data-cat="ml">
+        <div class="pcard-img">
+          <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=320&fit=crop" alt="Machine Learning" loading="lazy" />
+          <div class="pcard-overlay">
+            <a href="https://github.com/Ayesigarooney/Machinelearning" target="_blank" rel="noopener" class="pcard-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-cat"><i class="fas fa-brain"></i> Machine Learning</span>
+            <span class="lang-badge python">Python</span>
+          </div>
+          <h3>ML Notebooks Collection</h3>
+          <p>Google Colab experiments covering regression, classification, neural networks and data preprocessing — documented and reproducible.</p>
+          <div class="pcard-tags">
+            <span>Python</span><span>Jupyter</span><span>TensorFlow</span><span>Colab</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- To-Do -->
+      <article class="pcard" data-cat="web">
+        <div class="pcard-img">
+          <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=320&fit=crop" alt="To-Do App" loading="lazy" />
+          <div class="pcard-overlay">
+            <a href="https://ayesigarooney.github.io/to-do/" target="_blank" rel="noopener" class="pcard-btn" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            <a href="https://github.com/Ayesigarooney/to-do"  target="_blank" rel="noopener" class="pcard-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-cat"><i class="fas fa-globe"></i> Web App</span>
+            <span class="lang-badge js">JS</span>
+          </div>
+          <h3>To-Do Web App</h3>
+          <p>Responsive task manager with add, complete and delete functionality. Persistent via localStorage — no server required.</p>
+          <div class="pcard-tags">
+            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>LocalStorage</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Calculator -->
+      <article class="pcard" data-cat="web">
+        <div class="pcard-img">
+          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=320&fit=crop" alt="Calculator App" loading="lazy" />
+          <div class="pcard-overlay">
+            <a href="https://ayesigarooney.github.io/calculator/" target="_blank" rel="noopener" class="pcard-btn" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+            <a href="https://github.com/Ayesigarooney/calculator"  target="_blank" rel="noopener" class="pcard-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-meta">
+            <span class="pcard-cat"><i class="fas fa-globe"></i> Web App</span>
+            <span class="lang-badge js">JS</span>
+          </div>
+          <h3>Calculator Web App</h3>
+          <p>Keyboard-friendly calculator with full arithmetic operations. Built entirely in vanilla JavaScript with a clean modern UI.</p>
+          <div class="pcard-tags">
+            <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /projects-grid -->
+
+    <div class="projects-cta">
+      <a href="https://github.com/Ayesigarooney" target="_blank" rel="noopener" class="btn btn-outline">
+        <i class="fab fa-github"></i> All Repos on GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SKILLS ===================== -->
+<section id="skills" class="section skills">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">What I Use</p>
+      <h2 class="section-title">Skills &amp; Technologies</h2>
+      <p class="section-sub">Tools and languages I reach for on every project.</p>
+    </div>
+    <div class="skills-grid">
+
+      <div class="scard">
+        <div class="scard-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3>Mobile</h3>
+        <div class="scard-skills">
+          <div class="skill"><i class="fas fa-feather-alt"></i><span>Flutter</span></div>
+          <div class="skill"><i class="fas fa-code"></i><span>Dart</span></div>
+          <div class="skill"><i class="fas fa-fire"></i><span>Firebase</span></div>
+          <div class="skill"><i class="fas fa-wifi"></i><span>IoT</span></div>
+        </div>
+      </div>
+
+      <div class="scard">
+        <div class="scard-icon"><i class="fas fa-laptop-code"></i></div>
+        <h3>Web</h3>
+        <div class="scard-skills">
+          <div class="skill"><i class="fab fa-html5"></i><span>HTML5</span></div>
+          <div class="skill"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+          <div class="skill"><i class="fab fa-js-square"></i><span>JavaScript</span></div>
+          <div class="skill"><i class="fab fa-node-js"></i><span>Node.js</span></div>
+        </div>
+      </div>
+
+      <div class="scard">
+        <div class="scard-icon"><i class="fas fa-brain"></i></div>
+        <h3>Data &amp; ML</h3>
+        <div class="scard-skills">
+          <div class="skill"><i class="fab fa-python"></i><span>Python</span></div>
+          <div class="skill"><i class="fas fa-flask"></i><span>TensorFlow</span></div>
+          <div class="skill"><i class="fas fa-chart-bar"></i><span>Pandas</span></div>
+          <div class="skill"><i class="fas fa-book-open"></i><span>Jupyter</span></div>
+        </div>
+      </div>
+
+      <div class="scard">
+        <div class="scard-icon"><i class="fas fa-tools"></i></div>
+        <h3>Tools</h3>
+        <div class="scard-skills">
+          <div class="skill"><i class="fab fa-git-alt"></i><span>Git</span></div>
+          <div class="skill"><i class="fab fa-github"></i><span>GitHub</span></div>
+          <div class="skill"><i class="fab fa-docker"></i><span>Docker</span></div>
+          <div class="skill"><i class="fas fa-cloud"></i><span>Cloud APIs</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" class="section contact">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-eyebrow">Get In Touch</p>
+      <h2 class="section-title">Let's Work Together</h2>
+      <p class="section-sub">Open to freelance projects, collaborations and full-time roles.</p>
+    </div>
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <div class="ci-item">
+          <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <p class="ci-label">Email</p>
+            <a href="mailto:ayesigarooney8@gmail.com">ayesigarooney8@gmail.com</a>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <p class="ci-label">Phone</p>
+            <a href="tel:+256775152157">+256 775 152 157</a>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <p class="ci-label">Location</p>
+            <span>Mabaale, Kagadi — Uganda</span>
+          </div>
+        </div>
+
+        <div class="ci-socials">
+          <a href="https://github.com/Ayesigarooney" target="_blank" rel="noopener" class="ci-social" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="mailto:ayesigarooney8@gmail.com" class="ci-social" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="#" class="ci-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="ci-social" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xldnvlqb" method="POST" novalidate>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Full Name</label>
+            <input type="text"  id="name"    name="name"    placeholder="John Doe" required />
+          </div>
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email"   name="email"   placeholder="john@example.com" required />
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="Project inquiry, collaboration, etc." required />
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or idea…" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="footer-logo">AR<span class="dot">.</span></a>
+        <p>Full-Stack &amp; Mobile Developer<br>based in Uganda.</p>
+      </div>
+      <div class="footer-nav">
+        <p class="footer-nav-title">Navigation</p>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-contact">
+        <p class="footer-nav-title">Contact</p>
+        <a href="mailto:ayesigarooney8@gmail.com">ayesigarooney8@gmail.com</a>
+        <a href="tel:+256775152157">+256 775 152 157</a>
+        <a href="https://github.com/Ayesigarooney" target="_blank" rel="noopener">github.com/Ayesigarooney</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="footer-year"></span> Ayesiga Rooney. All rights reserved.</p>
+      <p>Made with <i class="fas fa-heart"></i> from Uganda</p>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script src="script.js"></script>
 </body>
 </html>
