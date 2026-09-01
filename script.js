@@ -32,22 +32,20 @@ function initTheme() {
   var icon = document.getElementById('theme-icon');
   if (!btn) return;
 
-  // Load saved preference; default to light
-  var saved = localStorage.getItem('theme') || 'light';
+  var saved = localStorage.getItem('ar-theme') || 'light';
   applyTheme(saved);
 
-  btn.addEventListener('click', function () {
+  /* Use touchend + click so both mouse and touch fire once */
+  addTap(btn, function () {
     var current = document.documentElement.getAttribute('data-theme') || 'light';
     var next    = current === 'dark' ? 'light' : 'dark';
     applyTheme(next);
-    localStorage.setItem('theme', next);
+    localStorage.setItem('ar-theme', next);
   });
 
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    if (icon) {
-      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    }
+    if (icon) icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
   }
 }
 
@@ -60,9 +58,8 @@ function initNavbar() {
   var sections = document.querySelectorAll('section[id]');
   var hint     = document.querySelector('.scroll-hint');
 
-  // Smooth scroll on desktop nav links
   links.forEach(function (link) {
-    link.addEventListener('click', function (e) {
+    addTap(link, function (e) {
       e.preventDefault();
       scrollToSection(link.getAttribute('href'));
     });
@@ -70,14 +67,9 @@ function initNavbar() {
 
   window.addEventListener('scroll', function () {
     var y = window.scrollY;
-
-    // Navbar shadow on scroll
     nav.classList.toggle('scrolled', y > 40);
-
-    // Hide scroll hint arrow
     if (hint) hint.style.opacity = y > 100 ? '0' : '1';
 
-    // Highlight active nav link
     var current = '';
     sections.forEach(function (s) {
       if (y >= s.offsetTop - 160) current = s.id;
@@ -85,67 +77,100 @@ function initNavbar() {
     links.forEach(function (l) {
       l.classList.toggle('active', l.getAttribute('href') === '#' + current);
     });
-
-    // Sync active state on drawer links too
-    var dLinks = document.querySelectorAll('.drawer-link');
-    dLinks.forEach(function (l) {
+    document.querySelectorAll('.drawer-link').forEach(function (l) {
       l.classList.toggle('active', l.getAttribute('href') === '#' + current);
     });
-
   }, { passive: true });
 }
 
 /* ------------------------------------------------
-   4. Mobile drawer
+   4. Mobile drawer — fully touch-safe
    ------------------------------------------------ */
 function initDrawer() {
-  var ham     = document.getElementById('ham');
-  var drawer  = document.getElementById('mobile-drawer');
-  var overlay = document.getElementById('drawer-overlay');
-  var closeBtn= document.getElementById('drawer-close');
-  var dLinks  = document.querySelectorAll('.drawer-link');
+  var ham      = document.getElementById('ham');
+  var drawer   = document.getElementById('mobile-drawer');
+  var overlay  = document.getElementById('drawer-overlay');
+  var closeBtn = document.getElementById('drawer-close');
+  var dLinks   = document.querySelectorAll('.drawer-link');
 
-  if (!ham || !drawer) return;
+  if (!ham || !drawer || !overlay) return;
 
   function openDrawer() {
     drawer.classList.add('open');
     overlay.classList.add('show');
+    /* pointer-events ON so overlay catches taps outside drawer */
+    overlay.style.pointerEvents = 'auto';
     ham.classList.add('open');
     ham.setAttribute('aria-expanded', 'true');
     drawer.setAttribute('aria-hidden', 'false');
+    /* Lock body scroll but keep it touchable inside drawer */
     document.body.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
   }
 
   function closeDrawer() {
     drawer.classList.remove('open');
     overlay.classList.remove('show');
+    overlay.style.pointerEvents = 'none';
     ham.classList.remove('open');
     ham.setAttribute('aria-expanded', 'false');
     drawer.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    document.body.style.touchAction = '';
   }
 
-  ham.addEventListener('click', function () {
+  /* Hamburger — tap + click */
+  addTap(ham, function () {
     drawer.classList.contains('open') ? closeDrawer() : openDrawer();
   });
 
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-  overlay.addEventListener('click', closeDrawer);
+  /* Close button */
+  if (closeBtn) addTap(closeBtn, closeDrawer);
 
-  // Close on link click then scroll
+  /* Overlay tap to close */
+  addTap(overlay, closeDrawer);
+
+  /* Drawer links */
   dLinks.forEach(function (link) {
-    link.addEventListener('click', function (e) {
+    addTap(link, function (e) {
       e.preventDefault();
       closeDrawer();
       setTimeout(function () {
         scrollToSection(link.getAttribute('href'));
-      }, 320); // wait for drawer to close
+      }, 300);
     });
   });
 
-  // Close drawer on ESC key
+  /* ESC key */
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeDrawer();
+  });
+}
+
+/* ------------------------------------------------
+   addTap — fires once on touchend OR click,
+   prevents the ghost 300 ms click on mobile.
+   ------------------------------------------------ */
+function addTap(el, fn) {
+  var touched = false;
+
+  el.addEventListener('touchstart', function () {
+    touched = false;
+  }, { passive: true });
+
+  el.addEventListener('touchmove', function () {
+    touched = true; /* user is scrolling, not tapping */
+  }, { passive: true });
+
+  el.addEventListener('touchend', function (e) {
+    if (touched) return;       /* was a scroll, ignore */
+    e.preventDefault();        /* stop ghost click */
+    fn(e);
+  });
+
+  el.addEventListener('click', function (e) {
+    /* On desktop (no touch) just fire normally */
+    if (!('ontouchstart' in window)) fn(e);
   });
 }
 
@@ -157,7 +182,7 @@ function scrollToSection(href) {
   if (!target) return;
   var navH = parseInt(
     getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
-  ) || 68;
+  ) || 60;
   window.scrollTo({ top: target.offsetTop - navH, behavior: 'smooth' });
 }
 
@@ -209,7 +234,7 @@ function heroCanvas() {
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(153,246,228,' + p.a + ')';
       ctx.fill();
-      p.x += p.vx;  p.y += p.vy;
+      p.x += p.vx; p.y += p.vy;
       if (p.x < 0 || p.x > W) p.vx *= -1;
       if (p.y < 0 || p.y > H) p.vy *= -1;
     }
@@ -240,7 +265,7 @@ function typing() {
     var word = words[wi];
     el.textContent = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
     if (!deleting && ci > word.length) { deleting = true; setTimeout(tick, 2400); return; }
-    if (deleting && ci < 0)  { deleting = false; ci = 0; wi = (wi + 1) % words.length; }
+    if (deleting && ci < 0) { deleting = false; ci = 0; wi = (wi + 1) % words.length; }
     setTimeout(tick, deleting ? 42 : 96);
   }
   setTimeout(tick, 1200);
@@ -253,7 +278,7 @@ function projectFilter() {
   var btns  = document.querySelectorAll('.fbtn');
   var cards = document.querySelectorAll('.pcard');
   btns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
+    addTap(btn, function () {
       btns.forEach(function (b) { b.classList.remove('active'); });
       btn.classList.add('active');
       var f = btn.getAttribute('data-filter');
@@ -276,7 +301,7 @@ function scrollReveal() {
     entries.forEach(function (e) {
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
   targets.forEach(function (el) { io.observe(el); });
 }
 
@@ -343,20 +368,27 @@ function contactForm() {
    ------------------------------------------------ */
 function showToast(msg, type) {
   document.querySelectorAll('.ar-toast').forEach(function (t) { t.remove(); });
-  var colors = { success:'#059669', error:'#dc2626', info:'#0d9488' };
-  var icons  = { success:'check-circle', error:'exclamation-circle', info:'info-circle' };
+  var colors = { success: '#059669', error: '#dc2626', info: '#0d9488' };
+  var icons  = { success: 'check-circle', error: 'exclamation-circle', info: 'info-circle' };
   var el = document.createElement('div');
   el.className = 'ar-toast';
-  el.innerHTML = '<i class="fas fa-' + (icons[type]||icons.info) + '"></i>&nbsp;' + msg;
-  var s = el.style;
-  s.cssText = 'position:fixed;top:80px;right:20px;background:' + (colors[type]||colors.info) +
-    ';color:#fff;padding:13px 22px;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.18);' +
-    'z-index:9999;opacity:0;transform:translateX(110%);transition:all .32s ease;' +
-    'display:flex;align-items:center;gap:8px;font-size:.92rem;font-weight:500;max-width:340px;font-family:inherit;';
+  el.innerHTML = '<i class="fas fa-' + (icons[type] || icons.info) + '"></i>&nbsp;' + msg;
+  el.style.cssText =
+    'position:fixed;top:80px;right:16px;' +
+    'background:' + (colors[type] || colors.info) + ';' +
+    'color:#fff;padding:12px 20px;border-radius:10px;' +
+    'box-shadow:0 6px 24px rgba(0,0,0,.2);z-index:9999;' +
+    'opacity:0;transform:translateX(110%);transition:all .32s ease;' +
+    'display:flex;align-items:center;gap:8px;' +
+    'font-size:.9rem;font-weight:500;max-width:90vw;font-family:inherit;';
   document.body.appendChild(el);
-  requestAnimationFrame(function () { el.style.opacity='1'; el.style.transform='translateX(0)'; });
+  requestAnimationFrame(function () {
+    el.style.opacity   = '1';
+    el.style.transform = 'translateX(0)';
+  });
   setTimeout(function () {
-    el.style.opacity='0'; el.style.transform='translateX(110%)';
+    el.style.opacity   = '0';
+    el.style.transform = 'translateX(110%)';
     setTimeout(function () { el.remove(); }, 340);
   }, 5000);
 }
@@ -370,7 +402,24 @@ function backToTop() {
   window.addEventListener('scroll', function () {
     btn.classList.toggle('show', window.scrollY > 400);
   }, { passive: true });
-  btn.addEventListener('click', function () {
+  addTap(btn, function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+/* ------------------------------------------------
+   1. Footer year
+
+/* ------------------------------------------------
+   12. Back to top
+   ------------------------------------------------ */
+function backToTop() {
+  var btn = document.getElementById('to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', function () {
+    btn.classList.toggle('show', window.scrollY > 400);
+  }, { passive: true });
+  addTap(btn, function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }

@@ -67,6 +67,15 @@ a      { text-decoration: none; color: inherit; }
 ul     { list-style: none; }
 button { font-family: inherit; cursor: pointer; }
 
+/* Touch responsiveness — eliminates 300ms tap delay everywhere */
+a, button, .fbtn, .ham, .theme-btn, .drawer-link, .drawer-close,
+.drawer-social, .povbtn, .to-top, .scroll-hint, .nav-link, .nav-brand {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 /* ============================================================
    LAYOUT
    ============================================================ */
@@ -223,14 +232,20 @@ button { font-family: inherit; cursor: pointer; }
    MOBILE DRAWER
    ============================================================ */
 .drawer-overlay {
-  display: none;
-  position: fixed; inset: 0;
+  /* Always in DOM, never blocking touches until open */
+  position: fixed;
+  inset: 0;
   background: rgba(0,0,0,.55);
   z-index: 1090;
-  backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
-  opacity: 0; transition: opacity .3s ease;
+  opacity: 0;
+  pointer-events: none;           /* CRITICAL — invisible = untouchable */
+  transition: opacity .3s ease;
+  -webkit-tap-highlight-color: transparent;
 }
-.drawer-overlay.show { opacity: 1; }
+.drawer-overlay.show {
+  opacity: 1;
+  pointer-events: auto;           /* Now active — taps close drawer */
+}
 
 .mobile-drawer {
   position: fixed; top: 0; right: 0;
@@ -734,9 +749,6 @@ button { font-family: inherit; cursor: pointer; }
   /* Show hamburger, hide desktop nav */
   .ham          { display: flex; }
   .nav-list     { display: none; }
-
-  /* Reveal drawer overlay */
-  .drawer-overlay { display: block; }
 
   /* Hero stacks */
   .hero-inner {
